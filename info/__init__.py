@@ -9,6 +9,8 @@ from redis import StrictRedis
 
 from config import config
 
+from info.modules.index import index_blu
+
 # 初始化数据库
 db = SQLAlchemy()
 
@@ -46,5 +48,8 @@ def create_app(config_name):
 
     # 设置session保存指定位置
     Session(app)
+
+    # 注册蓝图
+    app.register_blueprint(index_blu)
 
     return app
