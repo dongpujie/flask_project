@@ -14,8 +14,8 @@ $(function(){
     $(".login_form #mobile").focus(function(){
         $("#login-mobile-err").hide();
     });
-    $(".login_form #password").focus(function(){
-        $("#login-password-err").hide();
+    $(".login_form #passport").focus(function(){
+        $("#login-passport-err").hide();
     });
 
     $(".register_form #mobile").focus(function(){
@@ -27,8 +27,8 @@ $(function(){
     $(".register_form #smscode").focus(function(){
         $("#register-sms-code-err").hide();
     });
-    $(".register_form #password").focus(function(){
-        $("#register-password-err").hide();
+    $(".register_form #passport").focus(function(){
+        $("#register-passport-err").hide();
     });
 
 
@@ -97,7 +97,7 @@ $(function(){
     $(".login_form_con").submit(function (e) {
         e.preventDefault()
         var mobile = $(".login_form #mobile").val()
-        var password = $(".login_form #password").val()
+        var password = $(".login_form #passport").val()
 
         if (!mobile) {
             $("#login-mobile-err").show();
@@ -105,7 +105,7 @@ $(function(){
         }
 
         if (!password) {
-            $("#login-password-err").show();
+            $("#login-passport-err").show();
             return;
         }
 
@@ -132,14 +132,14 @@ $(function(){
             return;
         }
         if (!password) {
-            $("#register-password-err").html("请填写密码!");
-            $("#register-password-err").show();
+            $("#register-passport-err").html("请填写密码!");
+            $("#register-passport-err").show();
             return;
         }
 
 		if (password.length < 6) {
-            $("#register-password-err").html("密码长度不能少于6位");
-            $("#register-password-err").show();
+            $("#register-passport-err").html("密码长度不能少于6位");
+            $("#register-passport-err").show();
             return;
         }
 
@@ -155,7 +155,7 @@ function generateImageCode() {
     // 浏览器要发起图片验证码请求/image_code?imageCodeId=xxxxx
     imageCodeId = generateUUID();
     // 生成 url
-    var url = "/image_code?imageCodeId=" + imageCodeId;
+    var url = "/passport/image_code?imageCodeId=" + imageCodeId;
     // 给指定img标签设置src,设置了地址之后，img标签就会去向这个地址发起请求，请求图片
     $(".get_pic_code").attr("src", url)
 }
